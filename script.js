@@ -627,7 +627,7 @@ function initPackets() {
   function spawn() {
     const lane = lanes[rint(0, 2)];
     const p = {
-      lane, x: -240 - Math.random() * 60,
+      lane, proto: lane.proto, x: -240 - Math.random() * 60,
       speed: 95 + Math.random() * 75,
       src: `${rip()}:${lane.proto === "ICMP" ? "echo" : rport()}`,
       dst: `${rip()}:${lane.proto === "ICMP" ? "reply" : rport()}`,
@@ -699,9 +699,9 @@ function initPackets() {
   if (REDUCED) {
     // static: a few parked packets, all visible
     packets = [
-      { lane: lanes[0], x: 120, speed: 0, src: "192.168.1.10:443", dst: "10.0.0.8:52134" },
-      { lane: lanes[1], x: 380, speed: 0, src: "172.16.4.2:53", dst: "192.168.1.20:33011" },
-      { lane: lanes[2], x: 200, speed: 0, src: "10.1.0.5:echo", dst: "10.1.0.9:reply" },
+      { lane: lanes[0], proto: "TCP", x: 120, speed: 0, src: "192.168.1.10:443", dst: "10.0.0.8:52134" },
+      { lane: lanes[1], proto: "UDP", x: 380, speed: 0, src: "172.16.4.2:53", dst: "192.168.1.20:33011" },
+      { lane: lanes[2], proto: "ICMP", x: 200, speed: 0, src: "10.1.0.5:echo", dst: "10.1.0.9:reply" },
     ];
     frame(0, 0);
     return;
