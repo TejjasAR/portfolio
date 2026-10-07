@@ -5,54 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tejjas A R — Software Engineer</title>
   <meta name="description" content="Portfolio of Tejjas A R, Information Science & Engineering student (2027) building distributed systems in Java, ML pipelines in Python, and network analysis tools. Open to software engineer, backend, and ML roles and internships." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d0c0a'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' font-style='italic' fill='%23c8a25e' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23110505'/%3E%3Ctext x='32' y='45' font-family='Arial,sans-serif' font-size='36' font-weight='bold' fill='%23ff3b3b' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <a class="skip-link" href="#about">Skip to content</a>
-  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
 
-  <header class="nav" id="top">
+  <header class="nav" id="nav">
     <div class="nav-inner">
-      <a class="brand" href="#top" aria-label="Back to top"><span class="brand-mark">T</span><span class="brand-name">Tejjas A R</span></a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
-        <span></span><span></span>
+      <a class="brand" href="#top" aria-label="Tejjas A R — home">
+        <span class="brand-mark">T</span>
+        <span class="brand-name">Tejjas A R</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
       </button>
       <nav class="nav-links" id="navLinks" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#contact" class="nav-cta">Contact</a>
+        <a href="#work" data-nav="work">Work</a>
+        <a href="#skills" data-nav="skills">Skills</a>
+        <a href="#journey" data-nav="journey">Journey</a>
+        <a href="#education" data-nav="education">Education</a>
+        <a href="#contact" class="nav-cta magnetic" data-nav="contact">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <!-- Hero -->
+  <main id="top">
+    <!-- HERO -->
     <section class="hero" aria-label="Introduction">
-      <canvas class="dust" id="dust" aria-hidden="true"></canvas>
+      <canvas class="embers" id="embers" aria-hidden="true"></canvas>
       <div class="hero-inner">
-        <p class="kicker reveal">Portfolio &nbsp;·&nbsp; Bengaluru, India</p>
-        <h1 class="hero-title reveal">
-          Tejjas A&nbsp;R<br />
-          <em>builds quiet, correct</em><br />
-          software.
+        <p class="kicker reveal"><span class="pulse-dot" aria-hidden="true"></span>Portfolio · Bengaluru, India</p>
+        <h1 class="hero-title">
+          <span class="reveal-line"><span class="reveal">Code that</span></span>
+          <span class="reveal-line"><span class="reveal"><em>burns bright.</em></span></span>
         </h1>
-        <p class="hero-role reveal">Software Engineer · Backend &amp; Machine Learning</p>
-        <p class="hero-summary reveal">
-          Information Science &amp; Engineering student, graduating 2027. I build
-          distributed systems in Java, machine-learning pipelines in Python, and
-          network analysis tools — backend software that is correct, concurrent,
-          and easy to reason about.
-        </p>
+        <p class="lede reveal">I'm <strong>Tejjas A R</strong>, an Information Science &amp; Engineering student graduating in 2027. I build distributed systems in Java, machine-learning pipelines in Python, and network analysis tools — backend software that is correct, concurrent, and easy to reason about.</p>
         <div class="hero-actions reveal">
-          <a class="btn btn-gold" href="#projects">View my work</a>
-          <a class="btn btn-line" href="#contact">Get in touch</a>
+          <a class="btn btn-red magnetic" href="#work">See the work</a>
+          <a class="btn btn-ghost magnetic" href="#contact">Get in touch</a>
         </div>
         <div class="hero-social reveal">
           <a href="https://www.linkedin.com/in/tejjas-a-r-75b929332" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -69,197 +63,212 @@
           </a>
         </div>
       </div>
-      <a class="scroll-hint" href="#about" aria-label="Scroll to about"><span></span></a>
+      <a class="scroll-cue" href="#work" aria-label="Scroll to work"><span></span></a>
     </section>
 
-    <!-- Stats -->
+    <!-- STATS -->
     <section class="stats" aria-label="Highlights">
       <div class="container stats-grid">
-        <div class="stat reveal"><p class="stat-num" data-count="3">0</p><p class="stat-label">Projects shipped</p></div>
-        <div class="stat reveal"><p class="stat-num" data-count="8" data-decimals="2">0.00</p><p class="stat-label">CGPA / 10</p></div>
-        <div class="stat reveal"><p class="stat-num">R2</p><p class="stat-label">HackWithInfy hackathon</p></div>
-        <div class="stat reveal"><p class="stat-num" data-count="2">0</p><p class="stat-label">Clubs · Brain Bots &amp; NSS</p></div>
+        <div class="stat reveal"><span class="stat-num" data-count="3">0</span><span class="stat-label">Projects shipped</span></div>
+        <div class="stat reveal"><span class="stat-num" data-count="8" data-decimals="2">0</span><span class="stat-label">CGPA / 10</span></div>
+        <div class="stat reveal"><span class="stat-num" data-count="2" data-prefix="Round ">Round 0</span><span class="stat-label">HackWithInfy</span></div>
+        <div class="stat reveal"><span class="stat-num" data-count="2">0</span><span class="stat-label">Clubs led &amp; served</span></div>
       </div>
     </section>
 
-    <!-- About -->
-    <section class="chapter" id="about">
+    <!-- WORK -->
+    <section class="section" id="work" aria-label="Selected work">
       <div class="container">
-        <p class="chapter-kicker reveal">Chapter 01</p>
-        <h2 class="chapter-title reveal">About</h2>
-        <div class="about-grid">
-          <div class="about-prose reveal">
-            <p>
-              I'm an Information Science &amp; Engineering undergraduate at CMR Institute
-              of Technology, Bengaluru, graduating in 2027. I build backend systems that
-              are correct, concurrent, and easy to reason about — from a distributed
-              file system in Java to NLP pipelines and packet-level network tools in Python.
-            </p>
-            <p>
-              I care about fundamentals: networking, operating systems, data structures,
-              and clean code. I'm currently looking for software engineering, backend,
-              and machine learning roles and internships where I can learn fast and
-              ship real things.
-            </p>
+        <p class="section-kicker reveal">Selected work</p>
+        <h2 class="section-title reveal">Watch the systems <em>run.</em></h2>
+        <p class="section-sub reveal">Every project below is alive — these are live, looping visualizations of how each system actually works, built with the same care as the code behind them.</p>
+
+        <!-- PROJECT 1 : DFS -->
+        <article class="project reveal">
+          <div class="project-head">
+            <span class="project-index">01</span>
+            <div>
+              <h3>Distributed File System</h3>
+              <div class="pills">
+                <span>Java</span><span>TCP/IP</span><span>Socket Programming</span><span>Multithreading</span><span>OOP</span>
+              </div>
+            </div>
           </div>
-          <dl class="about-facts reveal">
-            <div><dt>Location</dt><dd>Bengaluru, Karnataka, India</dd></div>
-            <div><dt>Degree</dt><dd>B.E. Information Science &amp; Engineering, 2027</dd></div>
-            <div><dt>CGPA</dt><dd>8.00 / 10</dd></div>
-            <div><dt>Open to</dt><dd>Software Engineer · Backend · ML roles &amp; internships</dd></div>
-          </dl>
-        </div>
+          <div class="viz-frame">
+            <div class="viz-tag" id="dfsStage">Upload</div>
+            <canvas class="viz-canvas" id="dfsCanvas" aria-label="Animated diagram of the distributed file system: upload, chunking, replication, heartbeat and recovery"></canvas>
+          </div>
+          <ul class="project-points">
+            <li>Client–Master–Storage architecture over TCP sockets, serving concurrent clients with multithreading.</li>
+            <li>File replication with factor R=3 for high availability — upload, retrieval and deletion across storage nodes.</li>
+            <li>Heartbeat mechanism lets the master detect failures and trigger automatic recovery and rebalancing.</li>
+          </ul>
+        </article>
+
+        <!-- PROJECT 2 : SENTIMENT -->
+        <article class="project reveal">
+          <div class="project-head">
+            <span class="project-index">02</span>
+            <div>
+              <h3>Sentiment Analysis of Customer Reviews</h3>
+              <div class="pills">
+                <span>Python</span><span>Pandas</span><span>NLTK</span><span>Scikit-learn</span><span>Matplotlib</span><span>Jupyter</span>
+              </div>
+            </div>
+          </div>
+          <div class="viz-frame">
+            <div class="viz-tag" id="svStage">Tokenize</div>
+            <p class="sv-review" id="svReview" aria-live="polite"></p>
+            <div class="sv-bars" id="svBars" aria-hidden="true"></div>
+            <div class="sv-classify">
+              <svg class="sv-gauge" viewBox="0 0 200 112" aria-hidden="true">
+                <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="rgba(255,59,59,.22)" stroke-width="10" stroke-linecap="round"/>
+                <g font-family="JetBrains Mono, monospace" font-size="9" fill="#b9a49a" text-anchor="middle">
+                  <text x="28" y="112">NEG</text><text x="100" y="34">NEU</text><text x="172" y="112">POS</text>
+                </g>
+                <line id="svNeedle" x1="100" y1="100" x2="100" y2="38" stroke="#ff3b3b" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="100" cy="100" r="7" fill="#ff3b3b"/>
+              </svg>
+              <div class="sv-verdict" id="svVerdict">—</div>
+            </div>
+            <p class="viz-note">Sample reviews shown to demonstrate the pipeline.</p>
+          </div>
+          <ul class="project-points">
+            <li>NLP pipeline classifying reviews as positive, negative or neutral with supervised learning.</li>
+            <li>Tokenization, stop-word removal and stemming, with TF-IDF feature extraction.</li>
+            <li>Naive Bayes and Logistic Regression models, evaluated and visualized with Matplotlib.</li>
+          </ul>
+        </article>
+
+        <!-- PROJECT 3 : PACKET ANALYZER -->
+        <article class="project reveal">
+          <div class="project-head">
+            <span class="project-index">03</span>
+            <div>
+              <h3>Network Packet Analyzer</h3>
+              <div class="pills">
+                <span>Python</span><span>Scapy</span><span>Networking Protocols</span><span>Socket Programming</span>
+              </div>
+            </div>
+          </div>
+          <div class="viz-frame">
+            <div class="viz-tag">Live capture</div>
+            <div class="pkt-controls" role="group" aria-label="Protocol filter">
+              <button class="pkt-filter is-active" data-proto="ALL">All</button>
+              <button class="pkt-filter" data-proto="TCP">TCP</button>
+              <button class="pkt-filter" data-proto="UDP">UDP</button>
+              <button class="pkt-filter" data-proto="ICMP">ICMP</button>
+            </div>
+            <canvas class="viz-canvas" id="pktCanvas" aria-label="Animated network lane with TCP, UDP and ICMP packets streaming"></canvas>
+            <div class="pkt-counters">
+              <span><i class="dot dot-tcp"></i>TCP <b id="cntTcp">0</b></span>
+              <span><i class="dot dot-udp"></i>UDP <b id="cntUdp">0</b></span>
+              <span><i class="dot dot-icmp"></i>ICMP <b id="cntIcmp">0</b></span>
+            </div>
+          </div>
+          <ul class="project-points">
+            <li>Real-time capture and inspection of TCP, UDP and ICMP packets with Python and Scapy.</li>
+            <li>Extracts source/destination IPs, protocols and port numbers for traffic analysis.</li>
+            <li>Protocol-based filtering and logging to simplify monitoring and debugging.</li>
+          </ul>
+        </article>
       </div>
     </section>
 
-    <!-- Projects -->
-    <section class="chapter" id="projects">
+    <!-- SKILLS -->
+    <section class="section" id="skills" aria-label="Skills">
       <div class="container">
-        <p class="chapter-kicker reveal">Chapter 02</p>
-        <h2 class="chapter-title reveal">Selected work</h2>
-        <div class="projects">
-          <article class="project reveal">
-            <p class="project-num">01</p>
-            <h3>Distributed File System</h3>
-            <div class="tags"><span>Java</span><span>TCP/IP</span><span>Socket Programming</span><span>Multithreading</span><span>OOP</span></div>
-            <ul>
-              <li>Client–Master–Storage architecture that uploads, retrieves, and deletes files across storage nodes.</li>
-              <li>File replication with factor R=3, so data survives node failures.</li>
-              <li>Heartbeat mechanism monitors node health and triggers automatic recovery.</li>
-              <li>Automatic data rebalancing keeps load evenly distributed across nodes.</li>
-            </ul>
-          </article>
-          <article class="project reveal">
-            <p class="project-num">02</p>
-            <h3>Sentiment Analysis of Customer Reviews</h3>
-            <div class="tags"><span>Python</span><span>Pandas</span><span>NLTK</span><span>Scikit-learn</span><span>Matplotlib</span><span>Jupyter</span></div>
-            <ul>
-              <li>NLP pipeline that classifies customer reviews as positive, negative, or neutral.</li>
-              <li>Text preprocessing with tokenization, stop-word removal, stemming, and TF-IDF features.</li>
-              <li>Trained and compared Naive Bayes and Logistic Regression models.</li>
-              <li>Matplotlib visualizations to explore review trends and model results.</li>
-            </ul>
-          </article>
-          <article class="project reveal">
-            <p class="project-num">03</p>
-            <h3>Network Packet Analyzer</h3>
-            <div class="tags"><span>Python</span><span>Scapy</span><span>Networking Protocols</span><span>Socket Programming</span></div>
-            <ul>
-              <li>Captures and inspects network traffic in real time.</li>
-              <li>Parses TCP, UDP, and ICMP packets; extracts source/destination IPs, protocols, and port numbers.</li>
-              <li>Protocol-based filtering to focus on the traffic that matters.</li>
-              <li>Logs captured packets for later analysis.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section class="chapter" id="skills">
-      <div class="container">
-        <p class="chapter-kicker reveal">Chapter 03</p>
-        <h2 class="chapter-title reveal">Skills</h2>
-        <div class="skills-grid">
-          <div class="skill reveal">
+        <p class="section-kicker reveal">Arsenal</p>
+        <h2 class="section-title reveal">Tools of the <em>trade.</em></h2>
+        <div class="skill-groups">
+          <div class="skill-group reveal">
             <h3>Languages</h3>
-            <div class="tags"><span>Java</span><span>C++</span><span>Python</span><span>SQL</span></div>
+            <div class="pills glow"><span>Java</span><span>C++</span><span>Python</span><span>SQL</span></div>
           </div>
-          <div class="skill reveal">
+          <div class="skill-group reveal">
             <h3>Backend &amp; Databases</h3>
-            <div class="tags"><span>MySQL</span><span>TCP/IP Socket Programming</span><span>Multithreading</span><span>OOP</span></div>
+            <div class="pills glow"><span>MySQL</span><span>TCP/IP Socket Programming</span><span>Multithreading</span><span>Object-Oriented Programming</span></div>
           </div>
-          <div class="skill reveal">
+          <div class="skill-group reveal">
             <h3>Data &amp; Machine Learning</h3>
-            <div class="tags"><span>Pandas</span><span>NumPy</span><span>Scikit-learn</span><span>NLTK</span><span>Matplotlib</span><span>Seaborn</span><span>Power BI</span><span>Tableau</span></div>
+            <div class="pills glow"><span>Pandas</span><span>NumPy</span><span>Scikit-learn</span><span>NLTK</span><span>Matplotlib</span><span>Seaborn</span><span>Power BI</span><span>Tableau</span></div>
           </div>
-          <div class="skill reveal">
-            <h3>Tools</h3>
-            <div class="tags"><span>Git</span><span>GitHub</span><span>VS Code</span><span>IntelliJ IDEA</span><span>Jupyter Notebook</span><span>Kaggle</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section class="chapter" id="experience">
-      <div class="container">
-        <p class="chapter-kicker reveal">Chapter 04</p>
-        <h2 class="chapter-title reveal">Experience &amp; activities</h2>
-        <ol class="timeline" id="timeline">
-          <span class="timeline-progress" id="timelineProgress" aria-hidden="true"></span>
-          <li class="timeline-item reveal">
-            <p class="timeline-date">2024 – 2026</p>
-            <h3>Brain Bots Club, CMRIT</h3>
-            <p>Member of the technical club; helped organize technical events for students.</p>
-          </li>
-          <li class="timeline-item reveal">
-            <p class="timeline-date">2025 – 2026</p>
-            <h3>NSS Club, CMRIT — Photographer</h3>
-            <p>Volunteered with the National Service Scheme unit and handled event photography.</p>
-          </li>
-          <li class="timeline-item reveal">
-            <p class="timeline-date">Hackathon</p>
-            <h3>HackWithInfy</h3>
-            <p>Cleared Round 1 and competed in Round 2 of Infosys's national hackathon.</p>
-          </li>
-          <li class="timeline-item reveal">
-            <p class="timeline-date">2024</p>
-            <h3>Spardha '24 — Volunteer</h3>
-            <p>Volunteered at the college sports fest, supporting event operations.</p>
-          </li>
-          <li class="timeline-item reveal">
-            <p class="timeline-date">Events attended</p>
-            <h3>Conferences &amp; seminars</h3>
-            <p>AWS Summit 2026 · Space-Expo 2024 · industry seminars at CMRIT.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- Education -->
-    <section class="chapter" id="education">
-      <div class="container">
-        <p class="chapter-kicker reveal">Chapter 05</p>
-        <h2 class="chapter-title reveal">Education</h2>
-        <div class="edu-list">
-          <div class="edu reveal">
-            <div>
-              <h3>B.E. — Information Science &amp; Engineering</h3>
-              <p>CMR Institute of Technology, Bengaluru</p>
-            </div>
-            <div class="edu-meta"><p>2023 – 2027 (Expected)</p><p class="edu-score">CGPA 8.00 / 10</p></div>
-          </div>
-          <div class="edu reveal">
-            <div>
-              <h3>Pre-University — Science</h3>
-              <p>KPS PU College, Arsikere</p>
-            </div>
-            <div class="edu-meta"><p>2023</p><p class="edu-score">90.33%</p></div>
-          </div>
-          <div class="edu reveal">
-            <div>
-              <h3>Class X</h3>
-              <p>St. Mary's High School, Arsikere</p>
-            </div>
-            <div class="edu-meta"><p>2021</p><p class="edu-score">85.44%</p></div>
+          <div class="skill-group reveal">
+            <h3>Tools &amp; Platforms</h3>
+            <div class="pills glow"><span>Git</span><span>GitHub</span><span>VS Code</span><span>IntelliJ IDEA</span><span>Jupyter Notebook</span><span>Kaggle</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section class="chapter chapter-contact" id="contact">
-      <div class="container contact">
-        <p class="chapter-kicker reveal">Chapter 06</p>
+    <!-- JOURNEY -->
+    <section class="section" id="journey" aria-label="Journey">
+      <div class="container">
+        <p class="section-kicker reveal">Journey</p>
+        <h2 class="section-title reveal">Sparks along the <em>way.</em></h2>
+        <div class="timeline" id="timeline">
+          <div class="tl-progress" id="tlProgress" aria-hidden="true"></div>
+          <div class="tl-item reveal">
+            <span class="tl-dot"></span>
+            <div class="tl-card"><span class="tl-when">2026</span><h3>HackWithInfy Hackathon</h3><p>Cleared Round 1 and competed in Round 2 — problem-solving and competitive programming under pressure.</p></div>
+          </div>
+          <div class="tl-item reveal">
+            <span class="tl-dot"></span>
+            <div class="tl-card"><span class="tl-when">2026</span><h3>AWS Summit 2026</h3><p>Attended — cloud, scale, and where the industry is heading.</p></div>
+          </div>
+          <div class="tl-item reveal">
+            <span class="tl-dot"></span>
+            <div class="tl-card"><span class="tl-when">2025 – 2026</span><h3>NSS Club, CMRIT — Photographer</h3><p>Volunteered as the club photographer, capturing service events across campus.</p></div>
+          </div>
+          <div class="tl-item reveal">
+            <span class="tl-dot"></span>
+            <div class="tl-card"><span class="tl-when">2024 – 2026</span><h3>Brain Bots Club, CMRIT</h3><p>Active member — organized multiple technical events for the robotics club.</p></div>
+          </div>
+          <div class="tl-item reveal">
+            <span class="tl-dot"></span>
+            <div class="tl-card"><span class="tl-when">2024</span><h3>Spardha '24 — Volunteer</h3><p>Volunteered at the state-level inter-college sports competition. Also attended Space-Expo 2024.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section" id="education" aria-label="Education">
+      <div class="container">
+        <p class="section-kicker reveal">Education</p>
+        <h2 class="section-title reveal">Forged in <em>classrooms.</em></h2>
+        <div class="edu-grid">
+          <div class="edu-card reveal">
+            <span class="edu-when">2023 – 2027 · Expected</span>
+            <h3>B.E. — Information Science &amp; Engineering</h3>
+            <p>CMR Institute of Technology, Bengaluru</p>
+            <span class="edu-score">CGPA 8.00 / 10</span>
+          </div>
+          <div class="edu-card reveal">
+            <span class="edu-when">2023</span>
+            <h3>Pre-University — Science</h3>
+            <p>KPS PU College, Arsikere</p>
+            <span class="edu-score">90.33%</span>
+          </div>
+          <div class="edu-card reveal">
+            <span class="edu-when">2021</span>
+            <h3>Class X</h3>
+            <p>St. Mary's High School, Arsikere</p>
+            <span class="edu-score">85.44%</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact-section" id="contact" aria-label="Contact">
+      <div class="container contact-inner">
+        <p class="section-kicker reveal">Contact</p>
         <h2 class="contact-title reveal">Have a role in mind?<br /><em>Let's talk.</em></h2>
-        <p class="reveal">
-          I'm open to software engineering, backend, and ML roles and internships.
-          The fastest way to reach me is email — I usually reply within a day.
-        </p>
+        <p class="reveal">I'm open to software engineering, backend, and ML roles and internships. The fastest way to reach me is email — I usually reply within a day.</p>
         <div class="contact-actions reveal">
-          <a class="btn btn-gold" href="mailto:eshwartejjas@gmail.com">eshwartejjas@gmail.com</a>
-          <a class="btn btn-line" href="tel:+918310200823">+91 8310200823</a>
+          <a class="btn btn-red magnetic" href="mailto:eshwartejjas@gmail.com">eshwartejjas@gmail.com</a>
+          <a class="btn btn-ghost magnetic" href="tel:+918310200823">+91 83102 00823</a>
         </div>
         <p class="contact-note reveal">Bengaluru, Karnataka, India</p>
       </div>
@@ -268,17 +277,16 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <p>© <span id="year">2026</span> Tejjas A R</p>
-      <p class="footer-links">
+      <span>© 2026 Tejjas A R</span>
+      <span class="footer-links">
         <a href="https://github.com/TejjasAR" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/tejjas-a-r-75b929332" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://leetcode.com/u/TEJJASAR" target="_blank" rel="noopener">LeetCode</a>
-      </p>
+      </span>
     </div>
   </footer>
 
   <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
-
   <script src="script.js"></script>
 </body>
 </html>

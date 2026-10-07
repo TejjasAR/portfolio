@@ -2,24 +2,16 @@
 
 Personal portfolio website for Tejjas A R (Information Science & Engineering, CMRIT Bengaluru, graduating 2027).
 
-Quiet-luxury editorial design: warm charcoal ink, ivory, and a single champagne-gold
-accent; Fraunces serif display type paired with Inter; "chapter" section structure;
-gold-dust constellation canvas in the hero.
+Ember-red design: deep near-black with a red tint, crimson/scarlet accents, red glows.
+Bold Archivo display type paired with Inter; live animated visualizations for every
+project; ember particle canvas in the hero.
 
 ## Live site
 
-Once GitHub Pages is enabled (Settings → Pages → Deploy from branch → `main` / root), the site is served from `index.html`.
+Enable GitHub Pages: repo **Settings → Pages → Deploy from a branch → `main` → `/ (root)`**.
+The site is pure static HTML/CSS/JS — no build step — so it deploys as-is.
 
-## Files
-
-- `index.html` — single-page site: hero, stats, about, projects, skills, experience timeline, education, contact
-- `styles.css` — editorial theme, responsive, reveal/hover/underline motion (transform + opacity only)
-- `script.js` — mobile nav, scroll progress bar, active nav highlighting, reveal-on-scroll with stagger, animated stat counters, gold-dust canvas, hero parallax, timeline draw-on-scroll, magnetic buttons, back-to-top (no dependencies)
-
-No build step. All asset paths are relative, so it works from any subpath. Honors
-`prefers-reduced-motion` (heavy animation disabled).
-
-## Local preview
+## Preview locally
 
 ```bash
 cd ~/workspace/portfolio
@@ -27,13 +19,19 @@ python3 -m http.server 8000
 # open http://localhost:8000
 ```
 
-## Deploy
+## Project visualizations (all live, looping, zero dependencies)
 
-```bash
-git init
-git add .
-git commit -m "Initial portfolio site"
-git branch -M main
-git remote add origin git@github.com:TejjasAR/portfolio.git
-git push -u origin main
-```
+- **Distributed File System** — canvas animation: file upload → chunking → R=3
+  replication across 3 storage nodes → heartbeat pulses → node failure, rebalancing
+  and recovery, with labeled stages.
+- **Sentiment Analysis** — animated NLP pipeline: tokenization highlighting →
+  TF-IDF bars → classifier gauge landing on Positive / Negative / Neutral,
+  cycling through sample reviews.
+- **Network Packet Analyzer** — packets stream across TCP/UDP/ICMP lanes with
+  a working protocol filter (auto-cycles; clickable) and live per-protocol counters.
+
+## Files
+
+- `index.html` — structure and all real content
+- `styles.css` — ember-red theme, responsive, reduced-motion support
+- `script.js` — particles, reveals, counters, timeline, and the three visualizations
