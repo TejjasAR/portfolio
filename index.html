@@ -5,20 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tejjas A R — Software Engineer</title>
   <meta name="description" content="Portfolio of Tejjas A R, Information Science & Engineering student (2027) building distributed systems in Java, ML pipelines in Python, and network analysis tools. Open to software engineer, backend, and ML roles and internships." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1220'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='36' font-weight='bold' fill='%2360a5fa' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d0c0a'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' font-style='italic' fill='%23c8a25e' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <a class="skip-link" href="#about">Skip to content</a>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
   <header class="nav" id="top">
     <div class="nav-inner">
-      <a class="brand" href="#top">Tejjas A R</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
+      <a class="brand" href="#top" aria-label="Back to top"><span class="brand-mark">T</span><span class="brand-name">Tejjas A R</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span>
       </button>
-      <nav class="nav-links" id="navLinks">
+      <nav class="nav-links" id="navLinks" aria-label="Primary">
         <a href="#about">About</a>
-        <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
         <a href="#education">Education</a>
         <a href="#contact" class="nav-cta">Contact</a>
@@ -28,20 +34,25 @@
 
   <main>
     <!-- Hero -->
-    <section class="hero">
+    <section class="hero" aria-label="Introduction">
+      <canvas class="dust" id="dust" aria-hidden="true"></canvas>
       <div class="hero-inner">
-        <p class="hero-kicker reveal">Hello, I'm</p>
-        <h1 class="reveal">Tejjas A R</h1>
+        <p class="kicker reveal">Portfolio &nbsp;·&nbsp; Bengaluru, India</p>
+        <h1 class="hero-title reveal">
+          Tejjas A&nbsp;R<br />
+          <em>builds quiet, correct</em><br />
+          software.
+        </h1>
         <p class="hero-role reveal">Software Engineer · Backend &amp; Machine Learning</p>
         <p class="hero-summary reveal">
-          Information Science &amp; Engineering student (graduating 2027) with hands-on
-          experience building distributed systems in Java, machine learning pipelines
-          in Python, and network analysis tools. I focus on backend development and
-          scalable software.
+          Information Science &amp; Engineering student, graduating 2027. I build
+          distributed systems in Java, machine-learning pipelines in Python, and
+          network analysis tools — backend software that is correct, concurrent,
+          and easy to reason about.
         </p>
         <div class="hero-actions reveal">
-          <a class="btn btn-primary" href="#projects">View my work</a>
-          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+          <a class="btn btn-gold" href="#projects">View my work</a>
+          <a class="btn btn-line" href="#contact">Get in touch</a>
         </div>
         <div class="hero-social reveal">
           <a href="https://www.linkedin.com/in/tejjas-a-r-75b929332" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -58,15 +69,26 @@
           </a>
         </div>
       </div>
-      <a class="scroll-hint" href="#about" aria-label="Scroll to about">↓</a>
+      <a class="scroll-hint" href="#about" aria-label="Scroll to about"><span></span></a>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats" aria-label="Highlights">
+      <div class="container stats-grid">
+        <div class="stat reveal"><p class="stat-num" data-count="3">0</p><p class="stat-label">Projects shipped</p></div>
+        <div class="stat reveal"><p class="stat-num" data-count="8" data-decimals="2">0.00</p><p class="stat-label">CGPA / 10</p></div>
+        <div class="stat reveal"><p class="stat-num">R2</p><p class="stat-label">HackWithInfy hackathon</p></div>
+        <div class="stat reveal"><p class="stat-num" data-count="2">0</p><p class="stat-label">Clubs · Brain Bots &amp; NSS</p></div>
+      </div>
     </section>
 
     <!-- About -->
-    <section class="section" id="about">
+    <section class="chapter" id="about">
       <div class="container">
-        <h2 class="section-title reveal">About me</h2>
+        <p class="chapter-kicker reveal">Chapter 01</p>
+        <h2 class="chapter-title reveal">About</h2>
         <div class="about-grid">
-          <div class="reveal">
+          <div class="about-prose reveal">
             <p>
               I'm an Information Science &amp; Engineering undergraduate at CMR Institute
               of Technology, Bengaluru, graduating in 2027. I build backend systems that
@@ -80,47 +102,24 @@
               ship real things.
             </p>
           </div>
-          <ul class="about-facts reveal">
-            <li><span>Location</span>Bengaluru, Karnataka, India</li>
-            <li><span>Degree</span>B.E. Information Science &amp; Engineering, 2027</li>
-            <li><span>CGPA</span>8.00 / 10</li>
-            <li><span>Open to</span>Software Engineer · Backend · ML roles &amp; internships</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section class="section section-alt" id="skills">
-      <div class="container">
-        <h2 class="section-title reveal">Skills</h2>
-        <div class="skills-grid">
-          <div class="card reveal">
-            <h3>Languages</h3>
-            <div class="tags"><span>Java</span><span>C++</span><span>Python</span><span>SQL</span></div>
-          </div>
-          <div class="card reveal">
-            <h3>Backend &amp; Databases</h3>
-            <div class="tags"><span>MySQL</span><span>TCP/IP Socket Programming</span><span>Multithreading</span><span>OOP</span></div>
-          </div>
-          <div class="card reveal">
-            <h3>Data &amp; Machine Learning</h3>
-            <div class="tags"><span>Pandas</span><span>NumPy</span><span>Scikit-learn</span><span>NLTK</span><span>Matplotlib</span><span>Seaborn</span><span>Power BI</span><span>Tableau</span></div>
-          </div>
-          <div class="card reveal">
-            <h3>Tools</h3>
-            <div class="tags"><span>Git</span><span>GitHub</span><span>VS Code</span><span>IntelliJ IDEA</span><span>Jupyter Notebook</span><span>Kaggle</span></div>
-          </div>
+          <dl class="about-facts reveal">
+            <div><dt>Location</dt><dd>Bengaluru, Karnataka, India</dd></div>
+            <div><dt>Degree</dt><dd>B.E. Information Science &amp; Engineering, 2027</dd></div>
+            <div><dt>CGPA</dt><dd>8.00 / 10</dd></div>
+            <div><dt>Open to</dt><dd>Software Engineer · Backend · ML roles &amp; internships</dd></div>
+          </dl>
         </div>
       </div>
     </section>
 
     <!-- Projects -->
-    <section class="section" id="projects">
+    <section class="chapter" id="projects">
       <div class="container">
-        <h2 class="section-title reveal">Projects</h2>
-        <div class="projects-grid">
-          <article class="card project reveal">
+        <p class="chapter-kicker reveal">Chapter 02</p>
+        <h2 class="chapter-title reveal">Selected work</h2>
+        <div class="projects">
+          <article class="project reveal">
+            <p class="project-num">01</p>
             <h3>Distributed File System</h3>
             <div class="tags"><span>Java</span><span>TCP/IP</span><span>Socket Programming</span><span>Multithreading</span><span>OOP</span></div>
             <ul>
@@ -130,7 +129,8 @@
               <li>Automatic data rebalancing keeps load evenly distributed across nodes.</li>
             </ul>
           </article>
-          <article class="card project reveal">
+          <article class="project reveal">
+            <p class="project-num">02</p>
             <h3>Sentiment Analysis of Customer Reviews</h3>
             <div class="tags"><span>Python</span><span>Pandas</span><span>NLTK</span><span>Scikit-learn</span><span>Matplotlib</span><span>Jupyter</span></div>
             <ul>
@@ -140,12 +140,13 @@
               <li>Matplotlib visualizations to explore review trends and model results.</li>
             </ul>
           </article>
-          <article class="card project reveal">
+          <article class="project reveal">
+            <p class="project-num">03</p>
             <h3>Network Packet Analyzer</h3>
             <div class="tags"><span>Python</span><span>Scapy</span><span>Networking Protocols</span><span>Socket Programming</span></div>
             <ul>
               <li>Captures and inspects network traffic in real time.</li>
-              <li>Parses TCP, UDP, and ICMP packets and extracts source/destination IPs, protocols, and port numbers.</li>
+              <li>Parses TCP, UDP, and ICMP packets; extracts source/destination IPs, protocols, and port numbers.</li>
               <li>Protocol-based filtering to focus on the traffic that matters.</li>
               <li>Logs captured packets for later analysis.</li>
             </ul>
@@ -154,60 +155,89 @@
       </div>
     </section>
 
-    <!-- Experience / Activities -->
-    <section class="section section-alt" id="experience">
+    <!-- Skills -->
+    <section class="chapter" id="skills">
       <div class="container">
-        <h2 class="section-title reveal">Experience &amp; activities</h2>
-        <div class="timeline">
-          <div class="timeline-item reveal">
-            <p class="timeline-date">2024 – 2026</p>
-            <h3>Brain Bots Club, CMRIT</h3>
-            <p>Member of the technical club; helped organize technical events for students.</p>
+        <p class="chapter-kicker reveal">Chapter 03</p>
+        <h2 class="chapter-title reveal">Skills</h2>
+        <div class="skills-grid">
+          <div class="skill reveal">
+            <h3>Languages</h3>
+            <div class="tags"><span>Java</span><span>C++</span><span>Python</span><span>SQL</span></div>
           </div>
-          <div class="timeline-item reveal">
-            <p class="timeline-date">2025 – 2026</p>
-            <h3>NSS Club, CMRIT — Photographer</h3>
-            <p>Volunteered with the National Service Scheme unit and handled event photography.</p>
+          <div class="skill reveal">
+            <h3>Backend &amp; Databases</h3>
+            <div class="tags"><span>MySQL</span><span>TCP/IP Socket Programming</span><span>Multithreading</span><span>OOP</span></div>
           </div>
-          <div class="timeline-item reveal">
-            <p class="timeline-date">Hackathon</p>
-            <h3>HackWithInfy</h3>
-            <p>Cleared Round 1 and competed in Round 2 of Infosys's national hackathon.</p>
+          <div class="skill reveal">
+            <h3>Data &amp; Machine Learning</h3>
+            <div class="tags"><span>Pandas</span><span>NumPy</span><span>Scikit-learn</span><span>NLTK</span><span>Matplotlib</span><span>Seaborn</span><span>Power BI</span><span>Tableau</span></div>
           </div>
-          <div class="timeline-item reveal">
-            <p class="timeline-date">2024</p>
-            <h3>Spardha '24 — Volunteer</h3>
-            <p>Volunteered at the college sports fest, supporting event operations.</p>
-          </div>
-          <div class="timeline-item reveal">
-            <p class="timeline-date">Events attended</p>
-            <h3>Conferences &amp; seminars</h3>
-            <p>AWS Summit 2026 · Space-Expo 2024 · industry seminars at CMRIT.</p>
+          <div class="skill reveal">
+            <h3>Tools</h3>
+            <div class="tags"><span>Git</span><span>GitHub</span><span>VS Code</span><span>IntelliJ IDEA</span><span>Jupyter Notebook</span><span>Kaggle</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Education -->
-    <section class="section" id="education">
+    <!-- Experience -->
+    <section class="chapter" id="experience">
       <div class="container">
-        <h2 class="section-title reveal">Education</h2>
+        <p class="chapter-kicker reveal">Chapter 04</p>
+        <h2 class="chapter-title reveal">Experience &amp; activities</h2>
+        <ol class="timeline" id="timeline">
+          <span class="timeline-progress" id="timelineProgress" aria-hidden="true"></span>
+          <li class="timeline-item reveal">
+            <p class="timeline-date">2024 – 2026</p>
+            <h3>Brain Bots Club, CMRIT</h3>
+            <p>Member of the technical club; helped organize technical events for students.</p>
+          </li>
+          <li class="timeline-item reveal">
+            <p class="timeline-date">2025 – 2026</p>
+            <h3>NSS Club, CMRIT — Photographer</h3>
+            <p>Volunteered with the National Service Scheme unit and handled event photography.</p>
+          </li>
+          <li class="timeline-item reveal">
+            <p class="timeline-date">Hackathon</p>
+            <h3>HackWithInfy</h3>
+            <p>Cleared Round 1 and competed in Round 2 of Infosys's national hackathon.</p>
+          </li>
+          <li class="timeline-item reveal">
+            <p class="timeline-date">2024</p>
+            <h3>Spardha '24 — Volunteer</h3>
+            <p>Volunteered at the college sports fest, supporting event operations.</p>
+          </li>
+          <li class="timeline-item reveal">
+            <p class="timeline-date">Events attended</p>
+            <h3>Conferences &amp; seminars</h3>
+            <p>AWS Summit 2026 · Space-Expo 2024 · industry seminars at CMRIT.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="chapter" id="education">
+      <div class="container">
+        <p class="chapter-kicker reveal">Chapter 05</p>
+        <h2 class="chapter-title reveal">Education</h2>
         <div class="edu-list">
-          <div class="card edu reveal">
+          <div class="edu reveal">
             <div>
               <h3>B.E. — Information Science &amp; Engineering</h3>
               <p>CMR Institute of Technology, Bengaluru</p>
             </div>
             <div class="edu-meta"><p>2023 – 2027 (Expected)</p><p class="edu-score">CGPA 8.00 / 10</p></div>
           </div>
-          <div class="card edu reveal">
+          <div class="edu reveal">
             <div>
               <h3>Pre-University — Science</h3>
               <p>KPS PU College, Arsikere</p>
             </div>
             <div class="edu-meta"><p>2023</p><p class="edu-score">90.33%</p></div>
           </div>
-          <div class="card edu reveal">
+          <div class="edu reveal">
             <div>
               <h3>Class X</h3>
               <p>St. Mary's High School, Arsikere</p>
@@ -219,29 +249,26 @@
     </section>
 
     <!-- Contact -->
-    <section class="section section-alt" id="contact">
+    <section class="chapter chapter-contact" id="contact">
       <div class="container contact">
-        <h2 class="section-title reveal">Get in touch</h2>
+        <p class="chapter-kicker reveal">Chapter 06</p>
+        <h2 class="contact-title reveal">Have a role in mind?<br /><em>Let's talk.</em></h2>
         <p class="reveal">
           I'm open to software engineering, backend, and ML roles and internships.
           The fastest way to reach me is email — I usually reply within a day.
         </p>
         <div class="contact-actions reveal">
-          <a class="btn btn-primary" href="mailto:eshwartejjas@gmail.com">Email me</a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/tejjas-a-r-75b929332" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn btn-gold" href="mailto:eshwartejjas@gmail.com">eshwartejjas@gmail.com</a>
+          <a class="btn btn-line" href="tel:+918310200823">+91 8310200823</a>
         </div>
-        <ul class="contact-list reveal">
-          <li><span>Email</span><a href="mailto:eshwartejjas@gmail.com">eshwartejjas@gmail.com</a></li>
-          <li><span>Phone</span><a href="tel:+918310200823">+91 8310200823</a></li>
-          <li><span>Location</span>Bengaluru, Karnataka, India</li>
-        </ul>
+        <p class="contact-note reveal">Bengaluru, Karnataka, India</p>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container">
-      <p>© <span id="year">2026</span> Tejjas A R · Built with plain HTML, CSS, and JavaScript</p>
+    <div class="container footer-inner">
+      <p>© <span id="year">2026</span> Tejjas A R</p>
       <p class="footer-links">
         <a href="https://github.com/TejjasAR" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/tejjas-a-r-75b929332" target="_blank" rel="noopener">LinkedIn</a>
@@ -249,6 +276,8 @@
       </p>
     </div>
   </footer>
+
+  <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
 
   <script src="script.js"></script>
 </body>
