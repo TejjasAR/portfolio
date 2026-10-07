@@ -1,292 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tejjas A R — Software Engineer</title>
-  <meta name="description" content="Portfolio of Tejjas A R, Information Science & Engineering student (2027) building distributed systems in Java, ML pipelines in Python, and network analysis tools. Open to software engineer, backend, and ML roles and internships." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23110505'/%3E%3Ctext x='32' y='45' font-family='Arial,sans-serif' font-size='36' font-weight='bold' fill='%23ff3b3b' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tejjas A R — Software Engineer</title>
+<meta name="description" content="Portfolio of Tejjas A R — Information Science undergrad building distributed systems, machine learning pipelines and network tooling.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050914'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='34' font-weight='700' fill='%234d7cfe' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E">
 </head>
 <body>
-  <div class="progress" id="progress" aria-hidden="true"></div>
 
-  <header class="nav" id="nav">
-    <div class="nav-inner">
-      <a class="brand" href="#top" aria-label="Tejjas A R — home">
-        <span class="brand-mark">T</span>
-        <span class="brand-name">Tejjas A R</span>
+<!-- Preloader -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="loader-mark">T</div>
+  <div class="loader-track"><span></span></div>
+</div>
+
+<!-- Custom cursor (fine pointers only) -->
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+<!-- Scroll progress -->
+<div class="progress" id="progress" aria-hidden="true"><span></span></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a class="brand" href="#home" aria-label="Tejjas A R — home">tejjas<span>.dev</span></a>
+  <nav class="nav-links" id="navLinks" aria-label="Primary">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#journey">Journey</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="nav-right">
+    <a class="btn btn-small" href="#contact">Let's talk</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#skills">Skills</a>
+  <a href="#journey">Journey</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="hero-fade" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <p class="eyebrow reveal">Bengaluru, India &nbsp;·&nbsp; Open to opportunities</p>
+    <h1 class="hero-title">
+      <span class="ht-line"><span class="ht-word">Tejjas</span></span>
+      <span class="ht-line"><span class="ht-word accent">A&nbsp;R</span></span>
+    </h1>
+    <p class="hero-role reveal" style="--d:.15s">I build <span class="typed" id="typed"></span><span class="caret" aria-hidden="true"></span></p>
+    <p class="hero-sub reveal" style="--d:.25s">Information Science undergrad crafting distributed systems, machine-learning pipelines and network tooling — engineered for clarity, built to scale.</p>
+    <div class="hero-cta reveal" style="--d:.35s">
+      <a href="#projects" class="btn btn-primary magnetic">Explore my work
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="nav-links" id="navLinks" aria-label="Primary">
-        <a href="#work" data-nav="work">Work</a>
-        <a href="#skills" data-nav="skills">Skills</a>
-        <a href="#journey" data-nav="journey">Journey</a>
-        <a href="#education" data-nav="education">Education</a>
-        <a href="#contact" class="nav-cta magnetic" data-nav="contact">Contact</a>
-      </nav>
+      <a href="#contact" class="btn btn-ghost magnetic">Get in touch</a>
     </div>
-  </header>
+    <div class="hero-socials reveal" style="--d:.45s">
+      <a href="https://github.com/TejjasAR" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.77 1.05.77 2.12v3.15c0 .3.21.67.8.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/tejjas-a-r-75b929332" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>
+      </a>
+      <a href="https://leetcode.com/u/TEJJASAR" target="_blank" rel="noopener" aria-label="LeetCode">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.48 5.5 8.5 10.48l-2.83-2.83-2.12 2.12 4.95 4.95 7.1-7.1-2.12-2.12zm-7.1 13.02 2.12 2.12 7.1-7.1 1.06 1.06 1.06-1.06-3.18-3.18-8.16 8.16zM21.5 8.5l-1.06-1.06-2.12 2.12 1.06 1.06 2.12-2.12z"/></svg>
+      </a>
+      <a href="mailto:eshwartejjas@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+      </a>
+    </div>
+  </div>
+  <a class="scroll-hint" href="#about" aria-label="Scroll to about"><span class="mouse"><span class="wheel"></span></span></a>
+</section>
 
-  <main id="top">
-    <!-- HERO -->
-    <section class="hero" aria-label="Introduction">
-      <canvas class="embers" id="embers" aria-hidden="true"></canvas>
-      <div class="hero-inner">
-        <p class="kicker reveal"><span class="pulse-dot" aria-hidden="true"></span>Portfolio · Bengaluru, India</p>
-        <h1 class="hero-title">
-          <span class="reveal-line"><span class="reveal">Code that</span></span>
-          <span class="reveal-line"><span class="reveal"><em>burns bright.</em></span></span>
-        </h1>
-        <p class="lede reveal">I'm <strong>Tejjas A R</strong>, an Information Science &amp; Engineering student graduating in 2027. I build distributed systems in Java, machine-learning pipelines in Python, and network analysis tools — backend software that is correct, concurrent, and easy to reason about.</p>
-        <div class="hero-actions reveal">
-          <a class="btn btn-red magnetic" href="#work">See the work</a>
-          <a class="btn btn-ghost magnetic" href="#contact">Get in touch</a>
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marqueeTrack">
+    <span>Java</span><i>✦</i><span>Python</span><i>✦</i><span>Distributed Systems</span><i>✦</i><span>Machine Learning</span><i>✦</i><span>NLP</span><i>✦</i><span>Computer Networks</span><i>✦</i><span>Scapy</span><i>✦</i><span>Git</span><i>✦</i><span>Linux</span><i>✦</i>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about">
+  <div class="container">
+    <p class="eyebrow reveal">01 · About</p>
+    <div class="about-grid">
+      <div>
+        <h2 class="section-title reveal">Engineer in the making,<br><span class="grad">curious by default.</span></h2>
+        <p class="lead reveal" style="--d:.1s">I'm Tejjas, a final-year Information Science &amp; Engineering student at CMR Institute of Technology, Bengaluru. I like systems that are hard to build and satisfying to understand — so I build them: a distributed file store in Java, an NLP sentiment engine in Python, a packet sniffer with Scapy.</p>
+        <p class="lead reveal" style="--d:.18s">When I'm not writing code, I'm usually behind a camera for NSS, designing for the Brain Bots club, or chasing the next hackathon.</p>
+      </div>
+      <div class="stats reveal" style="--d:.15s">
+        <div class="stat"><span class="stat-num" data-count="3">0</span><span class="stat-label">Projects shipped</span></div>
+        <div class="stat"><span class="stat-num" data-count="8" data-decimals="2">0</span><span class="stat-label">CGPA / 10</span></div>
+        <div class="stat"><span class="stat-num">R2</span><span class="stat-label">HackWithInfy</span></div>
+        <div class="stat"><span class="stat-num" data-count="2">0</span><span class="stat-label">Clubs &amp; communities</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section class="section section-alt" id="projects">
+  <div class="container">
+    <p class="eyebrow reveal">02 · Projects</p>
+    <h2 class="section-title reveal">Things I've <span class="grad">built &amp; broken</span></h2>
+    <p class="section-sub reveal" style="--d:.1s">Each project below is alive — watch the systems actually run.</p>
+
+    <!-- PROJECT 1 : DFS -->
+    <article class="project reveal" id="proj-dfs">
+      <div class="project-head">
+        <div>
+          <p class="proj-index">Project 01 — Distributed Systems</p>
+          <h3>Distributed File System</h3>
         </div>
-        <div class="hero-social reveal">
-          <a href="https://www.linkedin.com/in/tejjas-a-r-75b929332" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
-          </a>
-          <a href="https://github.com/TejjasAR" target="_blank" rel="noopener" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14 0 1.55-.01 2.79-.01 3.17 0 .31.2.68.8.56A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
-          </a>
-          <a href="https://leetcode.com/u/TEJJASAR" target="_blank" rel="noopener" aria-label="LeetCode">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.48 4.93 12.06 6.35l4.24 4.24-8.49 8.49-2.12-2.12-1.42 1.41 3.54 3.54 9.9-9.9-3.54-3.54-1.41 1.42 2.12 2.12-2.83-2.83-1.41-1.42zM7.78 13.63l-4.24 4.24 3.54 3.54 1.41-1.42-2.12-2.12 2.83-2.83-1.42-1.41zM20.66 3.34l-9.9 9.9 1.42 1.41 9.9-9.9-1.42-1.41z"/></svg>
-          </a>
-          <a href="mailto:eshwartejjas@gmail.com" aria-label="Email">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          </a>
+        <div class="tags"><span>Java</span><span>Sockets</span><span>Replication</span></div>
+      </div>
+      <p class="project-desc">A fault-tolerant file store in Java: files are chunked, checksummed and replicated across storage nodes with heartbeats, automatic failover and rebalancing when a node dies.</p>
+      <div class="viz-frame">
+        <canvas class="viz-canvas" id="dfsCanvas"></canvas>
+        <div class="viz-steps" id="dfsSteps"></div>
+        <div class="viz-caption"><span class="pulse-dot"></span><span id="dfsCaption">Starting cluster…</span></div>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/TejjasAR" target="_blank" rel="noopener">View on GitHub
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- PROJECT 2 : SENTIMENT -->
+    <article class="project reveal" id="proj-sentiment">
+      <div class="project-head">
+        <div>
+          <p class="proj-index">Project 02 — Machine Learning</p>
+          <h3>Sentiment Analysis Engine</h3>
         </div>
+        <div class="tags"><span>Python</span><span>NLP</span><span>TF-IDF</span></div>
       </div>
-      <a class="scroll-cue" href="#work" aria-label="Scroll to work"><span></span></a>
-    </section>
-
-    <!-- STATS -->
-    <section class="stats" aria-label="Highlights">
-      <div class="container stats-grid">
-        <div class="stat reveal"><span class="stat-num" data-count="3">0</span><span class="stat-label">Projects shipped</span></div>
-        <div class="stat reveal"><span class="stat-num" data-count="8" data-decimals="2">0</span><span class="stat-label">CGPA / 10</span></div>
-        <div class="stat reveal"><span class="stat-num" data-count="2" data-prefix="Round ">Round 0</span><span class="stat-label">HackWithInfy</span></div>
-        <div class="stat reveal"><span class="stat-num" data-count="2">0</span><span class="stat-label">Clubs led &amp; served</span></div>
-      </div>
-    </section>
-
-    <!-- WORK -->
-    <section class="section" id="work" aria-label="Selected work">
-      <div class="container">
-        <p class="section-kicker reveal">Selected work</p>
-        <h2 class="section-title reveal">Watch the systems <em>run.</em></h2>
-        <p class="section-sub reveal">Every project below is alive — these are live, looping visualizations of how each system actually works, built with the same care as the code behind them.</p>
-
-        <!-- PROJECT 1 : DFS -->
-        <article class="project reveal">
-          <div class="project-head">
-            <span class="project-index">01</span>
-            <div>
-              <h3>Distributed File System</h3>
-              <div class="pills">
-                <span>Java</span><span>TCP/IP</span><span>Socket Programming</span><span>Multithreading</span><span>OOP</span>
-              </div>
+      <p class="project-desc">An NLP pipeline that reads product reviews — tokenizing text, weighing words with TF-IDF and classifying the sentiment. Watch a review travel through the pipeline.</p>
+      <div class="viz-frame sentiment-viz">
+        <div class="sent-stage">
+          <p class="sent-label">Input review</p>
+          <div class="sent-review" id="sentReview"><span class="sent-caret"></span></div>
+        </div>
+        <div class="sent-arrow" aria-hidden="true">↓</div>
+        <div class="sent-stage">
+          <p class="sent-label">Tokenization</p>
+          <div class="sent-tokens" id="sentTokens"></div>
+        </div>
+        <div class="sent-cols">
+          <div class="sent-stage">
+            <p class="sent-label">TF-IDF weights</p>
+            <div class="sent-bars" id="sentBars"></div>
+          </div>
+          <div class="sent-stage">
+            <p class="sent-label">Classification</p>
+            <div class="gauge-wrap">
+              <canvas id="sentGauge"></canvas>
+              <div class="sent-verdict" id="sentVerdict">—</div>
             </div>
-          </div>
-          <div class="viz-frame">
-            <div class="viz-tag" id="dfsStage">Upload</div>
-            <canvas class="viz-canvas" id="dfsCanvas" aria-label="Animated diagram of the distributed file system: upload, chunking, replication, heartbeat and recovery"></canvas>
-          </div>
-          <ul class="project-points">
-            <li>Client–Master–Storage architecture over TCP sockets, serving concurrent clients with multithreading.</li>
-            <li>File replication with factor R=3 for high availability — upload, retrieval and deletion across storage nodes.</li>
-            <li>Heartbeat mechanism lets the master detect failures and trigger automatic recovery and rebalancing.</li>
-          </ul>
-        </article>
-
-        <!-- PROJECT 2 : SENTIMENT -->
-        <article class="project reveal">
-          <div class="project-head">
-            <span class="project-index">02</span>
-            <div>
-              <h3>Sentiment Analysis of Customer Reviews</h3>
-              <div class="pills">
-                <span>Python</span><span>Pandas</span><span>NLTK</span><span>Scikit-learn</span><span>Matplotlib</span><span>Jupyter</span>
-              </div>
-            </div>
-          </div>
-          <div class="viz-frame">
-            <div class="viz-tag" id="svStage">Tokenize</div>
-            <p class="sv-review" id="svReview" aria-live="polite"></p>
-            <div class="sv-bars" id="svBars" aria-hidden="true"></div>
-            <div class="sv-classify">
-              <svg class="sv-gauge" viewBox="0 0 200 112" aria-hidden="true">
-                <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="rgba(255,59,59,.22)" stroke-width="10" stroke-linecap="round"/>
-                <g font-family="JetBrains Mono, monospace" font-size="9" fill="#b9a49a" text-anchor="middle">
-                  <text x="28" y="112">NEG</text><text x="100" y="34">NEU</text><text x="172" y="112">POS</text>
-                </g>
-                <line id="svNeedle" x1="100" y1="100" x2="100" y2="38" stroke="#ff3b3b" stroke-width="4" stroke-linecap="round"/>
-                <circle cx="100" cy="100" r="7" fill="#ff3b3b"/>
-              </svg>
-              <div class="sv-verdict" id="svVerdict">—</div>
-            </div>
-            <p class="viz-note">Sample reviews shown to demonstrate the pipeline.</p>
-          </div>
-          <ul class="project-points">
-            <li>NLP pipeline classifying reviews as positive, negative or neutral with supervised learning.</li>
-            <li>Tokenization, stop-word removal and stemming, with TF-IDF feature extraction.</li>
-            <li>Naive Bayes and Logistic Regression models, evaluated and visualized with Matplotlib.</li>
-          </ul>
-        </article>
-
-        <!-- PROJECT 3 : PACKET ANALYZER -->
-        <article class="project reveal">
-          <div class="project-head">
-            <span class="project-index">03</span>
-            <div>
-              <h3>Network Packet Analyzer</h3>
-              <div class="pills">
-                <span>Python</span><span>Scapy</span><span>Networking Protocols</span><span>Socket Programming</span>
-              </div>
-            </div>
-          </div>
-          <div class="viz-frame">
-            <div class="viz-tag">Live capture</div>
-            <div class="pkt-controls" role="group" aria-label="Protocol filter">
-              <button class="pkt-filter is-active" data-proto="ALL">All</button>
-              <button class="pkt-filter" data-proto="TCP">TCP</button>
-              <button class="pkt-filter" data-proto="UDP">UDP</button>
-              <button class="pkt-filter" data-proto="ICMP">ICMP</button>
-            </div>
-            <canvas class="viz-canvas" id="pktCanvas" aria-label="Animated network lane with TCP, UDP and ICMP packets streaming"></canvas>
-            <div class="pkt-counters">
-              <span><i class="dot dot-tcp"></i>TCP <b id="cntTcp">0</b></span>
-              <span><i class="dot dot-udp"></i>UDP <b id="cntUdp">0</b></span>
-              <span><i class="dot dot-icmp"></i>ICMP <b id="cntIcmp">0</b></span>
-            </div>
-          </div>
-          <ul class="project-points">
-            <li>Real-time capture and inspection of TCP, UDP and ICMP packets with Python and Scapy.</li>
-            <li>Extracts source/destination IPs, protocols and port numbers for traffic analysis.</li>
-            <li>Protocol-based filtering and logging to simplify monitoring and debugging.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="section" id="skills" aria-label="Skills">
-      <div class="container">
-        <p class="section-kicker reveal">Arsenal</p>
-        <h2 class="section-title reveal">Tools of the <em>trade.</em></h2>
-        <div class="skill-groups">
-          <div class="skill-group reveal">
-            <h3>Languages</h3>
-            <div class="pills glow"><span>Java</span><span>C++</span><span>Python</span><span>SQL</span></div>
-          </div>
-          <div class="skill-group reveal">
-            <h3>Backend &amp; Databases</h3>
-            <div class="pills glow"><span>MySQL</span><span>TCP/IP Socket Programming</span><span>Multithreading</span><span>Object-Oriented Programming</span></div>
-          </div>
-          <div class="skill-group reveal">
-            <h3>Data &amp; Machine Learning</h3>
-            <div class="pills glow"><span>Pandas</span><span>NumPy</span><span>Scikit-learn</span><span>NLTK</span><span>Matplotlib</span><span>Seaborn</span><span>Power BI</span><span>Tableau</span></div>
-          </div>
-          <div class="skill-group reveal">
-            <h3>Tools &amp; Platforms</h3>
-            <div class="pills glow"><span>Git</span><span>GitHub</span><span>VS Code</span><span>IntelliJ IDEA</span><span>Jupyter Notebook</span><span>Kaggle</span></div>
           </div>
         </div>
       </div>
-    </section>
+      <div class="project-links">
+        <a href="https://github.com/TejjasAR" target="_blank" rel="noopener">View on GitHub
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </a>
+      </div>
+    </article>
 
-    <!-- JOURNEY -->
-    <section class="section" id="journey" aria-label="Journey">
-      <div class="container">
-        <p class="section-kicker reveal">Journey</p>
-        <h2 class="section-title reveal">Sparks along the <em>way.</em></h2>
-        <div class="timeline" id="timeline">
-          <div class="tl-progress" id="tlProgress" aria-hidden="true"></div>
-          <div class="tl-item reveal">
-            <span class="tl-dot"></span>
-            <div class="tl-card"><span class="tl-when">2026</span><h3>HackWithInfy Hackathon</h3><p>Cleared Round 1 and competed in Round 2 — problem-solving and competitive programming under pressure.</p></div>
+    <!-- PROJECT 3 : PACKETS -->
+    <article class="project reveal" id="proj-packets">
+      <div class="project-head">
+        <div>
+          <p class="proj-index">Project 03 — Network Security</p>
+          <h3>Network Packet Analyzer</h3>
+        </div>
+        <div class="tags"><span>Python</span><span>Scapy</span><span>Networking</span></div>
+      </div>
+      <p class="project-desc">A Scapy-powered sniffer that captures live traffic, decodes TCP / UDP / ICMP and breaks down what's flowing through the wire. Filter the stream below.</p>
+      <div class="viz-frame">
+        <div class="pkt-toolbar">
+          <div class="pkt-filters" role="group" aria-label="Protocol filters">
+            <button class="filter active" data-proto="ALL">All</button>
+            <button class="filter" data-proto="TCP">TCP</button>
+            <button class="filter" data-proto="UDP">UDP</button>
+            <button class="filter" data-proto="ICMP">ICMP</button>
           </div>
-          <div class="tl-item reveal">
-            <span class="tl-dot"></span>
-            <div class="tl-card"><span class="tl-when">2026</span><h3>AWS Summit 2026</h3><p>Attended — cloud, scale, and where the industry is heading.</p></div>
-          </div>
-          <div class="tl-item reveal">
-            <span class="tl-dot"></span>
-            <div class="tl-card"><span class="tl-when">2025 – 2026</span><h3>NSS Club, CMRIT — Photographer</h3><p>Volunteered as the club photographer, capturing service events across campus.</p></div>
-          </div>
-          <div class="tl-item reveal">
-            <span class="tl-dot"></span>
-            <div class="tl-card"><span class="tl-when">2024 – 2026</span><h3>Brain Bots Club, CMRIT</h3><p>Active member — organized multiple technical events for the robotics club.</p></div>
-          </div>
-          <div class="tl-item reveal">
-            <span class="tl-dot"></span>
-            <div class="tl-card"><span class="tl-when">2024</span><h3>Spardha '24 — Volunteer</h3><p>Volunteered at the state-level inter-college sports competition. Also attended Space-Expo 2024.</p></div>
+          <div class="pkt-counters">
+            <span class="live-dot"></span>
+            <span class="mono" id="pktTotal">0 pkts</span>
+            <span class="mono dim" id="pktRate">0 pps</span>
           </div>
         </div>
+        <canvas class="viz-canvas" id="pktCanvas"></canvas>
+        <div class="viz-caption"><span class="pulse-dot"></span><span>Live capture · click a protocol to filter the stream</span></div>
       </div>
-    </section>
-
-    <!-- EDUCATION -->
-    <section class="section" id="education" aria-label="Education">
-      <div class="container">
-        <p class="section-kicker reveal">Education</p>
-        <h2 class="section-title reveal">Forged in <em>classrooms.</em></h2>
-        <div class="edu-grid">
-          <div class="edu-card reveal">
-            <span class="edu-when">2023 – 2027 · Expected</span>
-            <h3>B.E. — Information Science &amp; Engineering</h3>
-            <p>CMR Institute of Technology, Bengaluru</p>
-            <span class="edu-score">CGPA 8.00 / 10</span>
-          </div>
-          <div class="edu-card reveal">
-            <span class="edu-when">2023</span>
-            <h3>Pre-University — Science</h3>
-            <p>KPS PU College, Arsikere</p>
-            <span class="edu-score">90.33%</span>
-          </div>
-          <div class="edu-card reveal">
-            <span class="edu-when">2021</span>
-            <h3>Class X</h3>
-            <p>St. Mary's High School, Arsikere</p>
-            <span class="edu-score">85.44%</span>
-          </div>
-        </div>
+      <div class="project-links">
+        <a href="https://github.com/TejjasAR" target="_blank" rel="noopener">View on GitHub
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </a>
       </div>
-    </section>
+    </article>
+  </div>
+</section>
 
-    <!-- CONTACT -->
-    <section class="section contact-section" id="contact" aria-label="Contact">
-      <div class="container contact-inner">
-        <p class="section-kicker reveal">Contact</p>
-        <h2 class="contact-title reveal">Have a role in mind?<br /><em>Let's talk.</em></h2>
-        <p class="reveal">I'm open to software engineering, backend, and ML roles and internships. The fastest way to reach me is email — I usually reply within a day.</p>
-        <div class="contact-actions reveal">
-          <a class="btn btn-red magnetic" href="mailto:eshwartejjas@gmail.com">eshwartejjas@gmail.com</a>
-          <a class="btn btn-ghost magnetic" href="tel:+918310200823">+91 83102 00823</a>
-        </div>
-        <p class="contact-note reveal">Bengaluru, Karnataka, India</p>
+<!-- ============ SKILLS ============ -->
+<section class="section" id="skills">
+  <div class="container">
+    <p class="eyebrow reveal">03 · Skills</p>
+    <h2 class="section-title reveal">My <span class="grad">toolkit</span></h2>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <h4>Languages</h4>
+        <div class="pills"><span>Java</span><span>Python</span></div>
       </div>
-    </section>
-  </main>
+      <div class="skill-card reveal" style="--d:.1s">
+        <h4>Tools &amp; Libraries</h4>
+        <div class="pills"><span>Scapy</span><span>Git</span><span>Linux</span></div>
+      </div>
+      <div class="skill-card reveal" style="--d:.2s">
+        <h4>Concepts</h4>
+        <div class="pills"><span>Distributed Systems</span><span>Machine Learning</span><span>NLP</span><span>Computer Networks</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <span>© 2026 Tejjas A R</span>
-      <span class="footer-links">
+<!-- ============ JOURNEY ============ -->
+<section class="section section-alt" id="journey">
+  <div class="container">
+    <p class="eyebrow reveal">04 · Journey</p>
+    <h2 class="section-title reveal">The road <span class="grad">so far</span></h2>
+    <div class="timeline" id="timeline">
+      <div class="timeline-line"><span id="timelineFill"></span></div>
+      <div class="t-item reveal">
+        <span class="t-dot"></span>
+        <div class="t-card"><span class="t-date">2026</span><h4>AWS Summit 2026</h4><p>Attended — cloud, AI and what's next.</p></div>
+      </div>
+      <div class="t-item reveal">
+        <span class="t-dot"></span>
+        <div class="t-card"><span class="t-date">2025 — 2026</span><h4>Designer · Brain Bots Club</h4><p>Designed posters, event creatives and the club's visual identity.</p></div>
+      </div>
+      <div class="t-item reveal">
+        <span class="t-dot"></span>
+        <div class="t-card"><span class="t-date">2025 — 2026</span><h4>Volunteer Photographer · NSS</h4><p>Documented drives and events for the National Service Scheme.</p></div>
+      </div>
+      <div class="t-item reveal">
+        <span class="t-dot"></span>
+        <div class="t-card"><span class="t-date">2025</span><h4>HackWithInfy — Round 2</h4><p>Cleared Round 1 and competed in Round 2 of Infosys's national hackathon.</p></div>
+      </div>
+      <div class="t-item reveal">
+        <span class="t-dot"></span>
+        <div class="t-card"><span class="t-date">2024</span><h4>Volunteer · Spardha '24</h4><p>Helped run the college sports fest.</p></div>
+      </div>
+      <div class="t-item reveal">
+        <span class="t-dot"></span>
+        <div class="t-card"><span class="t-date">2024</span><h4>Space-Expo 2024</h4><p>Attended — a day among rockets and rovers.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EDUCATION ============ -->
+<section class="section" id="education">
+  <div class="container">
+    <p class="eyebrow reveal">05 · Education</p>
+    <h2 class="section-title reveal">Where I <span class="grad">study</span></h2>
+    <div class="edu-card reveal">
+      <div class="edu-main">
+        <h3>CMR Institute of Technology</h3>
+        <p>B.E. — Information Science &amp; Engineering</p>
+        <p class="dim">Bengaluru · 2023 — 2027</p>
+      </div>
+      <div class="edu-grade">
+        <span class="edu-num">8.00</span>
+        <span class="dim">CGPA / 10</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-card reveal">
+      <p class="eyebrow">06 · Contact</p>
+      <h2>Let's build something<br><span class="grad">worth remembering.</span></h2>
+      <p class="lead">I'm looking for internships and entry-level software roles — remote or in Bengaluru. My inbox is always open.</p>
+      <div class="contact-cta">
+        <a href="mailto:eshwartejjas@gmail.com" class="btn btn-primary magnetic">Say hello
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        </a>
+        <a href="tel:+918310200823" class="btn btn-ghost magnetic">+91 83102 00823</a>
+      </div>
+      <div class="contact-links">
         <a href="https://github.com/TejjasAR" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/tejjas-a-r-75b929332" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://linkedin.com/in/tejjas-a-r-75b929332" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://leetcode.com/u/TEJJASAR" target="_blank" rel="noopener">LeetCode</a>
-      </span>
+      </div>
     </div>
-  </footer>
+  </div>
+</section>
+</main>
 
-  <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
-  <script src="script.js"></script>
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 Tejjas A R · Designed &amp; built with care in Bengaluru</p>
+    <a href="#home" class="to-top" id="toTop" aria-label="Back to top">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </a>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
