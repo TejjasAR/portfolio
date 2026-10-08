@@ -179,6 +179,18 @@ function updateTimeline() {
   });
 })();
 
+/* ---------------- project card spotlight ---------------- */
+(() => {
+  if (!finePointer || reduced) return;
+  document.querySelectorAll(".project").forEach(card => {
+    card.addEventListener("pointermove", e => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty("--spot-x", `${e.clientX - r.left}px`);
+      card.style.setProperty("--spot-y", `${e.clientY - r.top}px`);
+    }, { passive: true });
+  });
+})();
+
 /* ---------------- hero constellation ---------------- */
 (() => {
   const canvas = document.getElementById("heroCanvas");
@@ -312,8 +324,12 @@ function updateTimeline() {
    ============================================================ */
 (() => {
   const canvas = document.getElementById("dfsCanvas");
+  if (canvas?.dataset.engine === "topology") return;
   const captionEl = document.getElementById("dfsCaption");
   const stepsEl = document.getElementById("dfsSteps");
+  const progressEl = document.getElementById("dfsProgress");
+  const stageCountEl = document.getElementById("dfsStageCount");
+  const controlEl = document.getElementById("dfsControl");
   if (!canvas) return;
 
   const BLUE = "#4d7cfe", SKY = "#38bdf8";
@@ -335,6 +351,7 @@ function updateTimeline() {
 
   let W = 0, H = 0, ctx = null;
   let stageIdx = 0, stageT = 0, raf = 0, last = 0, ringT = 0;
+  let paused = false;
   let chunks = [], particles = [], rings = [], events = [];
   let nodes = [];
   let fileBox = {}, chunkY = 0, nodeY = 0, nodeW = 0, nodeH = 0;
@@ -362,6 +379,7 @@ function updateTimeline() {
     stageIdx = i; stageT = 0; events = [];
     const s = STAGES[i];
     captionEl.textContent = s.caption;
+    if (stageCountEl) stageCountEl.textContent = `Stage ${i + 1} / ${STAGES.length}`;
     stepEls.forEach((el, j) => {
       el.classList.toggle("on", j === i);
       el.classList.toggle("done", j < i);
@@ -586,8 +604,10 @@ function updateTimeline() {
   }
 
   function update(dt, t) {
+    if (paused) { draw(t); return; }
     stageT += dt;
     const s = STAGES[stageIdx];
+    if (progressEl) progressEl.style.transform = `scaleX(${clamp(stageT / s.dur, 0, 1)})`;
     events.forEach(ev => { if (!ev.fired && stageT >= ev.at) { ev.fired = true; ev.fn(); } });
     if (s.id === "heartbeat") {
       ringT += dt;
@@ -623,6 +643,16 @@ function updateTimeline() {
   }
 
   layout();
+  if (controlEl) {
+    if (reduced) { controlEl.textContent = "Static view"; controlEl.disabled = true; }
+    else controlEl.addEventListener("click", () => {
+      paused = !paused;
+      controlEl.textContent = paused ? "Resume" : "Pause";
+      controlEl.setAttribute("aria-label", `${paused ? "Resume" : "Pause"} distributed file system simulation`);
+      canvas.closest(".viz-frame")?.classList.toggle("is-paused", paused);
+      last = performance.now();
+    });
+  }
   let rT;
   window.addEventListener("resize", () => { clearTimeout(rT); rT = setTimeout(() => { cancelAnimationFrame(raf); layout(); if (!reduced && visOn) { last = performance.now(); raf = requestAnimationFrame(frame); } }, 220); });
   let visOn = false;
@@ -642,6 +672,9 @@ function updateTimeline() {
   const barsEl = document.getElementById("sentBars");
   const gauge = document.getElementById("sentGauge");
   const verdictEl = document.getElementById("sentVerdict");
+  const statusEl = document.getElementById("sentStatus");
+  const progressEl = document.getElementById("sentProgress");
+  const nextEl = document.getElementById("sentNext");
   if (!reviewEl || !gauge) return;
 
   const REVIEWS = [
@@ -738,9 +771,15 @@ function updateTimeline() {
   }
 
   let runId = 0;
+  let reviewIndex = 0;
+  const setPipelineStage = (label, progress) => {
+    if (statusEl) statusEl.textContent = label;
+    if (progressEl) progressEl.style.transform = `scaleX(${progress})`;
+  };
 
   async function playReview(rv, id) {
     // 1. review typing
+    setPipelineStage("Reading input", 0.08);
     reviewEl.innerHTML = "";
     const caret = document.createElement("span");
     caret.className = "sent-caret";
@@ -758,6 +797,7 @@ function updateTimeline() {
     if (id !== runId) return;
 
     // 2. tokens
+    setPipelineStage("Tokenizing", 0.32);
     tokensEl.innerHTML = "";
     const words = rv.text.split(/\s+/).slice(0, 16);
     const spans = words.map(w => {
@@ -783,6 +823,7 @@ function updateTimeline() {
     if (id !== runId) return;
 
     // 3. tf-idf bars
+    setPipelineStage("Weighting terms", 0.62);
     barsEl.innerHTML = "";
     const barFills = [];
     rv.tfidf.forEach(([w, v]) => {
@@ -801,6 +842,7 @@ function updateTimeline() {
     if (id !== runId) return;
 
     // 4. gauge + verdict
+    setPipelineStage("Classifying", 0.84);
     needleTarget = rv.score;
     if (reduced) { needle = rv.score; drawGauge(); }
     verdictEl.className = "sent-verdict";
@@ -809,14 +851,15 @@ function updateTimeline() {
     if (id !== runId) return;
     verdictEl.textContent = rv.label;
     verdictEl.classList.add("show", rv.cls);
+    setPipelineStage(`${rv.label} · ${(rv.score * 100).toFixed(0)}% score`, 1);
     if (!reduced) await sleep(2600);
   }
 
   async function loop(id) {
-    let i = 0;
     while (id === runId) {
-      await playReview(REVIEWS[i % REVIEWS.length], id);
-      i++;
+      await playReview(REVIEWS[reviewIndex % REVIEWS.length], id);
+      if (id !== runId) return;
+      reviewIndex++;
       if (reduced) break;
     }
   }
@@ -825,6 +868,15 @@ function updateTimeline() {
   sizeGauge();
   let rT;
   window.addEventListener("resize", () => { clearTimeout(rT); rT = setTimeout(sizeGauge, 200); });
+  if (nextEl) nextEl.addEventListener("click", () => {
+    runId++;
+    reviewIndex++;
+    needleTarget = 0.5;
+    verdictEl.className = "sent-verdict";
+    const id = runId;
+    gaugeStart();
+    loop(id);
+  });
   visibilityLoop(frame,
     () => { gaugeStart(); runId++; const id = runId; loop(id); },
     () => { runId++; gaugeStop(); });
@@ -837,6 +889,7 @@ function updateTimeline() {
   const canvas = document.getElementById("pktCanvas");
   const totalEl = document.getElementById("pktTotal");
   const rateEl = document.getElementById("pktRate");
+  const controlEl = document.getElementById("pktControl");
   if (!canvas) return;
 
   const PROTOS = {
@@ -848,6 +901,7 @@ function updateTimeline() {
 
   let W = 0, H = 0, ctx = null;
   let packets = [], raf = 0, last = 0, spawnT = 0;
+  let paused = false;
   let filter = "ALL", total = 0, totalShown = 0;
   let secCount = 0, secT = 0, samples = new Array(90).fill(0);
   let pps = 0;
@@ -943,6 +997,7 @@ function updateTimeline() {
   }
 
   function update(dt, t) {
+    if (paused) { draw(t); return; }
     if (!reduced) {
       spawnT -= dt;
       if (spawnT <= 0) { spawn(); spawnT = rand(0.2, 0.42); }
@@ -990,8 +1045,20 @@ function updateTimeline() {
       btn.classList.add("active");
       filter = btn.dataset.proto;
       packets = [];
+      spawnT = 0;
     });
   });
+
+  if (controlEl) {
+    if (reduced) { controlEl.textContent = "Static view"; controlEl.disabled = true; }
+    else controlEl.addEventListener("click", () => {
+      paused = !paused;
+      controlEl.textContent = paused ? "Resume" : "Pause";
+      controlEl.setAttribute("aria-label", `${paused ? "Resume" : "Pause"} packet capture`);
+      canvas.closest(".viz-frame")?.classList.toggle("is-paused", paused);
+      last = performance.now();
+    });
+  }
 
   layout();
   let rT, visOn = false;
@@ -1006,4 +1073,50 @@ function updateTimeline() {
 /* keep timeline in sync after layout */
 window.addEventListener("load", updateTimeline);
 window.addEventListener("resize", () => requestAnimationFrame(updateTimeline));
+
+/* ---------------- reliable email action ---------------- */
+(() => {
+  const button = document.getElementById("emailBtn");
+  const toast = document.getElementById("copyToast");
+  if (!button) return;
+  let toastTimer;
+
+  const fallbackCopy = value => {
+    const input = document.createElement("textarea");
+    input.value = value;
+    input.setAttribute("readonly", "");
+    input.style.position = "fixed";
+    input.style.opacity = "0";
+    document.body.appendChild(input);
+    input.select();
+    const copied = document.execCommand("copy");
+    input.remove();
+    return copied;
+  };
+
+  button.addEventListener("click", async () => {
+    const email = button.dataset.email;
+    let copied = false;
+    try {
+      await navigator.clipboard.writeText(email);
+      copied = true;
+    } catch {
+      copied = fallbackCopy(email);
+    }
+
+    if (!copied) {
+      window.location.href = `mailto:${email}`;
+      return;
+    }
+
+    const previous = button.firstChild.textContent;
+    button.firstChild.textContent = "Email copied ";
+    if (toast) {
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 2400);
+    }
+    setTimeout(() => { button.firstChild.textContent = previous; }, 2400);
+  });
+})();
 })();

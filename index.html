@@ -7,7 +7,7 @@
 <meta name="description" content="Portfolio of Tejjas A R — Information Science undergrad building distributed systems, machine learning pipelines and network tooling.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050914'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-size='34' font-weight='700' fill='%234d7cfe' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E">
 </head>
@@ -57,7 +57,9 @@
   <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
   <div class="hero-fade" aria-hidden="true"></div>
   <div class="hero-inner">
+    <div class="hero-copy">
     <p class="eyebrow reveal">Bengaluru, India &nbsp;·&nbsp; Open to opportunities</p>
+    <p class="hero-kicker reveal">Engineer · photographer · curious human</p>
     <h1 class="hero-title">
       <span class="ht-line"><span class="ht-word">Tejjas</span></span>
       <span class="ht-line"><span class="ht-word accent">A&nbsp;R</span></span>
@@ -84,6 +86,11 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
       </a>
     </div>
+    </div>
+    <figure class="hero-portrait reveal" style="--d:.18s">
+      <div class="portrait-frame"><img src="assets/tejjas-portrait.png" alt="Tejjas A R in a burgundy suit" width="1024" height="1365"></div>
+      <figcaption><span>01</span> Building systems.<br>Framing stories.</figcaption>
+    </figure>
   </div>
   <a class="scroll-hint" href="#about" aria-label="Scroll to about"><span class="mouse"><span class="wheel"></span></span></a>
 </section>
@@ -133,7 +140,13 @@
       </div>
       <p class="project-desc">A fault-tolerant file store in Java: files are chunked, checksummed and replicated across storage nodes with heartbeats, automatic failover and rebalancing when a node dies.</p>
       <div class="viz-frame">
-        <canvas class="viz-canvas" id="dfsCanvas"></canvas>
+        <div class="viz-topbar">
+          <span class="viz-live"><i></i> Cluster simulation</span>
+          <span class="viz-stage-count" id="dfsStageCount">Stage 1 / 8</span>
+          <button class="viz-control" id="dfsControl" type="button" aria-label="Pause distributed file system simulation">Pause</button>
+        </div>
+        <div class="viz-progress" aria-hidden="true"><span id="dfsProgress"></span></div>
+        <canvas class="viz-canvas" id="dfsCanvas" data-engine="topology"></canvas>
         <div class="viz-steps" id="dfsSteps"></div>
         <div class="viz-caption"><span class="pulse-dot"></span><span id="dfsCaption">Starting cluster…</span></div>
       </div>
@@ -155,6 +168,12 @@
       </div>
       <p class="project-desc">An NLP pipeline that reads product reviews — tokenizing text, weighing words with TF-IDF and classifying the sentiment. Watch a review travel through the pipeline.</p>
       <div class="viz-frame sentiment-viz">
+        <div class="viz-topbar sent-topbar">
+          <span class="viz-live"><i></i> Inference pipeline</span>
+          <span class="viz-stage-count" id="sentStatus">Reading input</span>
+          <button class="viz-control" id="sentNext" type="button" aria-label="Analyze another review">Next sample</button>
+        </div>
+        <div class="viz-progress" aria-hidden="true"><span id="sentProgress"></span></div>
         <div class="sent-stage">
           <p class="sent-label">Input review</p>
           <div class="sent-review" id="sentReview"><span class="sent-caret"></span></div>
@@ -207,6 +226,7 @@
             <span class="live-dot"></span>
             <span class="mono" id="pktTotal">0 pkts</span>
             <span class="mono dim" id="pktRate">0 pps</span>
+            <button class="viz-control" id="pktControl" type="button" aria-label="Pause packet capture">Pause</button>
           </div>
         </div>
         <canvas class="viz-canvas" id="pktCanvas"></canvas>
@@ -305,11 +325,12 @@
       <h2>Let's build something<br><span class="grad">worth remembering.</span></h2>
       <p class="lead">I'm looking for internships and entry-level software roles — remote or in Bengaluru. My inbox is always open.</p>
       <div class="contact-cta">
-        <a href="mailto:eshwartejjas@gmail.com" class="btn btn-primary magnetic">Say hello
+        <button type="button" class="btn btn-primary magnetic" id="emailBtn" data-email="eshwartejjas@gmail.com">Copy my email
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-        </a>
+        </button>
         <a href="tel:+918310200823" class="btn btn-ghost magnetic">+91 83102 00823</a>
       </div>
+      <p class="contact-email"><a href="mailto:eshwartejjas@gmail.com">eshwartejjas@gmail.com</a></p>
       <div class="contact-links">
         <a href="https://github.com/TejjasAR" target="_blank" rel="noopener">GitHub</a>
         <a href="https://linkedin.com/in/tejjas-a-r-75b929332" target="_blank" rel="noopener">LinkedIn</a>
@@ -329,6 +350,9 @@
   </div>
 </footer>
 
+<div class="copy-toast" id="copyToast" role="status" aria-live="polite">Email copied to clipboard</div>
+
 <script src="script.js"></script>
+<script src="dfs-viz.js"></script>
 </body>
 </html>
